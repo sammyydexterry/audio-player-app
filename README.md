@@ -1,6 +1,5 @@
 ### Features to add
-- Shuffle
-- Loop
+- Loop song
 - Autoplay after a song is over
 
 ### Songs I used
