@@ -7,6 +7,8 @@ const songSlider = document.getElementById("song-slider");
 const playpauseButton = document.getElementById("playpause");
 const prevButton = document.getElementById("prev");
 const nextButton = document.getElementById("next");
+const shuffleButton = document.getElementById("shuffle");
+const loopButton = document.getElementById("loop");
 
 const minimizeButton = document.getElementById("minimize");
 const closeButton = document.getElementById("close");
@@ -67,19 +69,19 @@ const songs = [
         audio: "./music & covers/SO BAD - STAYC.mp3"
     },
     {
-        image: "./music & covers/cover10.jpg",
+        image: "./music & covers/cover10.png",
         name: "LEASE",
         artist: "Takeshi Abo",
         audio: "./music & covers/LEASE - Takeshi Abo.mp3"
     },
     {
-        image: "./music & covers/cover11.jpg",
+        image: "./music & covers/cover11.png",
         name: "Hi High",
         artist: "LOOΠΔ",
         audio: "./music & covers/Hi High - LOOΠΔ.mp3"
     },
     {
-        image: "./music & covers/cover12.jpg",
+        image: "./music & covers/cover12.png",
         name: "Alchohol-Free",
         artist: "TWICE",
         audio: "./music & covers/Alcohol-Free - TWICE.mp3"
@@ -92,12 +94,12 @@ const songs = [
     },
     {
         image: "./music & covers/cover14.jpg",
-        name: "Dire Dire Docks",
+        name: "Dire, Dire Docks",
         artist: "Super Mario 64",
-        audio: "./music & covers/Dire Dire Docks - Super Mario 64.mp3"
+        audio: "./music & covers/Dire, Dire Docks - Super Mario 64.mp3"
     },
     {
-        image: "./music & covers/cover15.jpg",
+        image: "./music & covers/cover15.jpeg",
         name: "Sweet Sandy Coast",
         artist: "SupaBubba",
         audio: "./music & covers/Sweet Sandy Coast - SupaBubba.mp3"
@@ -106,11 +108,12 @@ const songs = [
 
 const audio = document.createElement("audio");
 let currentSongIndex = 0;
+let nextSongIndex = currentSongIndex + 1;
 updateSong();
 
 prevButton.addEventListener("click", function() {
     if (currentSongIndex <= 0) {
-        return;
+        currentSongIndex = 15;
     }
     currentSongIndex--;
     updateSong();
@@ -119,7 +122,7 @@ prevButton.addEventListener("click", function() {
 
 nextButton.addEventListener("click", function() {
     if (currentSongIndex == songs.length - 1) {
-        return;
+        currentSongIndex = -1;
     }
     currentSongIndex++;
     updateSong();
@@ -166,3 +169,13 @@ setInterval(updateSlider, 1000);
 closeButton.addEventListener("click", function() {
     window.close();
 });
+
+shuffleButton.addEventListener("click", function() {
+    songs.forEach(shuffle);
+});
+
+function shuffle() {
+    const randomIndex = Math.floor(Math.random() * songs.length);
+    const currentIndex = songs.indexOf(this);  
+    [songs[currentIndex], songs[randomIndex]] = [songs[randomIndex], songs[currentIndex]];
+}
