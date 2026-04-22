@@ -179,3 +179,19 @@ function shuffle() {
     const currentIndex = songs.indexOf(this);  
     [songs[currentIndex], songs[randomIndex]] = [songs[randomIndex], songs[currentIndex]];
 }
+
+loopButton.addEventListener("click", function() {
+    if (audio.loop) {
+        audio.loop = false;
+        loopButton.classList.remove("active");
+    } else {
+        audio.loop = true;
+        loopButton.classList.add("active");
+    }
+});
+
+audio.addEventListener("ended", function() {
+    if (!audio.loop) {
+        nextButton.click();
+    }
+});
