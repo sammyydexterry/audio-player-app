@@ -2,6 +2,15 @@
   box-sizing: border-box;
 }
 
+@font-face {
+    font-family: "Deluxe";
+    src: url(./deluxefont-cufonfonts/DlxFont.ttf);
+}
+
+@font-face {
+    font-family: "Aero Sans";
+    src: url(./aerosans-cufonfonts/AeroSansLight-8OZqA.ttf);
+}
 
 body {
   margin: 0;
@@ -13,8 +22,11 @@ body {
   -webkit-app-region: drag;
 }
 
-.app {
-  padding: 16px;
+#music-player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 button,
@@ -23,4 +35,75 @@ textarea,
 select {
   -webkit-app-region: no-drag;
   cursor: pointer;
+}
+
+#song-image {
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 40px;
+  display: block;
+}
+
+#song-title {
+  font-family: "Deluxe", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#song-artist {
+    font-family: "Aero Sans", sans-serif;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#song-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+#song-controls i {
+    color: #16bdde;
+    align-items: center;
+}
+
+#window-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    color: #16bdde;
+}
+
+#song-slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 240px;
+    height: 5px;
+    background: linear-gradient(45deg, #16bdde, #71ab23);
+    border-radius: 5px;
+}
+
+#song-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #fbb905;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+button {
+    background: none;
+    border: none;
+    color: inherit;
 }
